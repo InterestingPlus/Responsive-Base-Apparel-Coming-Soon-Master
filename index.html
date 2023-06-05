@@ -36,10 +36,15 @@
 
       </div>
 
-      <div class="search">
-        <input type="email" placeholder="Email Address">
-        <button type="submit" title="submit"><img src="images/icon-arrow.svg" alt=""></button>
-      </div>
+      <form id="form" novalidate>
+
+        <div class="search">
+          <input type="email" placeholder="Email Address" id="email">
+          <button type="submit" title="submit"><img src="images/icon-arrow.svg" alt=""></button>
+          <img src="images/icon-error.svg" alt="" id="error-icon">
+        </div>
+        <div id="error-text">Please provide a valid email</div>
+      </form>
 
     </section>
 
@@ -55,9 +60,25 @@
 
 
   <script>
+    let email = document.getElementById("email");
+    let errorIcon = document.getElementById("error-icon");
+    let errorText = document.getElementById("error-text");
+    let form = document.getElementById("form");
 
+    form.addEventListener("submit", (e) => {
+      if(email.validity.typeMismatch) {
+        event.preventDefault();
+        errorIcon.style.opacity = 1;
+        errorText.style.opacity = 1;
+        email.style.borderColor = "hsl(0, 93%, 68%)";
+      } else {
+        event.preventDefault();
+        errorIcon.style.opacity = 0;
+        errorText.style.opacity = 0;
+        email.style.borderColor = "hsl(0, 25%, 85%)";
+      }
+    });
 
-    
     </script>
 
 
