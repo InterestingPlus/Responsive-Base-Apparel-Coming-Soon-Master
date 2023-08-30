@@ -65,7 +65,7 @@
     let errorText = document.getElementById("error-text");
     let form = document.getElementById("form");
 
-    form.addEventListener("submit", (e) => {
+    email.addEventListener("change", (e) => {
       if(email.validity.typeMismatch) {
         event.preventDefault();
         errorIcon.style.opacity = 1;
